@@ -39,3 +39,33 @@ public class GauvaCacheExample {
         }
     }
 }
+
+// import com.google.common.cache.CacheBuilder;
+// import com.google.common.cache.CacheLoader;
+// import com.google.common.cache.LoadingCache;
+
+// import java.util.concurrent.TimeUnit;
+
+// public class GuavaCacheExample {
+// public static void main(String[] args) throws Exception {
+// // Create a LoadingCache
+// LoadingCache<String, String> cache = CacheBuilder.newBuilder()
+// .maximumSize(100) // Set maximum size
+// .expireAfterWrite(10, TimeUnit.MINUTES) // Set expiration time
+// .build(new CacheLoader<String, String>() {
+// @Override
+// public String load(String key) {
+// return fetchFromDatabase(key); // Custom load logic
+// }
+// });
+
+// // Use the cache
+// String value = cache.get("myKey"); // Will load if not present
+// System.out.println("Value: " + value);
+// }
+
+// private static String fetchFromDatabase(String key) {
+// // Simulate fetching data from a database
+// return "Value for " + key;
+// }
+// }
