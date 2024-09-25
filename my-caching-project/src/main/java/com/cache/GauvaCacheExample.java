@@ -40,32 +40,38 @@ public class GauvaCacheExample {
     }
 }
 
+// import com.google.common.cache.Cache;
 // import com.google.common.cache.CacheBuilder;
-// import com.google.common.cache.CacheLoader;
-// import com.google.common.cache.LoadingCache;
 
 // import java.util.concurrent.TimeUnit;
 
 // public class GuavaCacheExample {
-// public static void main(String[] args) throws Exception {
-// // Create a LoadingCache
-// LoadingCache<String, String> cache = CacheBuilder.newBuilder()
-// .maximumSize(100) // Set maximum size
-// .expireAfterWrite(10, TimeUnit.MINUTES) // Set expiration time
-// .build(new CacheLoader<String, String>() {
-// @Override
-// public String load(String key) {
-// return fetchFromDatabase(key); // Custom load logic
-// }
-// });
+// public static void main(String[] args) {
+// // Create a cache that holds String keys and Integer values
+// Cache<String, Integer> cache = CacheBuilder.newBuilder()
+// .maximumSize(100) // Maximum number of entries in the cache
+// .expireAfterWrite(10, TimeUnit.MINUTES) // Expire entries 10 minutes after
+// write
+// .build();
 
-// // Use the cache
-// String value = cache.get("myKey"); // Will load if not present
-// System.out.println("Value: " + value);
-// }
+// // Adding values to the cache
+// cache.put("key1", 1);
+// cache.put("key2", 2);
 
-// private static String fetchFromDatabase(String key) {
-// // Simulate fetching data from a database
-// return "Value for " + key;
+// // Retrieving values from the cache
+// Integer value1 = cache.getIfPresent("key1");
+// System.out.println("Value for key1: " + value1); // Should print 1
+
+// // Attempting to retrieve a non-existent key
+// Integer value3 = cache.getIfPresent("key3");
+// System.out.println("Value for key3: " + value3); // Should print null
+
+// // Invalidating a specific key
+// cache.invalidate("key1");
+
+// // Checking the value after invalidation
+// Integer value1AfterInvalidation = cache.getIfPresent("key1");
+// System.out.println("Value for key1 after invalidation: " +
+// value1AfterInvalidation); // Should print null
 // }
 // }
